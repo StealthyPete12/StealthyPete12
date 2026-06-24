@@ -43,8 +43,6 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
 
 ### Programming
 
-<div align="center">
-
 <a href="https://www.python.org/">
   <img src="https://skillicons.dev/icons?i=python" height="50" alt="Python" />
 </a>
@@ -57,11 +55,7 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
   <img src="https://skillicons.dev/icons?i=dotnet" height="50" alt=".NET" />
 </a>
 
-</div>
-
 ### Frontend
-
-<div align="center">
 
 <a href="https://developer.mozilla.org/docs/Web/JavaScript">
   <img src="https://skillicons.dev/icons?i=javascript" height="50" alt="JavaScript" />
@@ -71,11 +65,7 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
   <img src="https://skillicons.dev/icons?i=react" height="50" alt="React" />
 </a>
 
-</div>
-
 ### Cloud & Infrastructure
-
-<div align="center">
 
 <a href="https://azure.microsoft.com/">
   <img src="https://skillicons.dev/icons?i=azure" height="50" alt="Azure" />
@@ -91,11 +81,7 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
 &nbsp;&nbsp;
 <img src="https://img.shields.io/badge/REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="REST API" />
 
-</div>
-
 ### AI Frameworks & Tools
-
-<div align="center">
 
 <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain" />
 &nbsp;&nbsp;
@@ -107,11 +93,7 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
 &nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Prompt_Engineering-0A66C2?style=for-the-badge&logo=bookstack&logoColor=white" alt="Prompt Engineering" />
 
-</div>
-
 ### Containerization & Orchestration
-
-<div align="center">
 
 <a href="https://www.docker.com/">
   <img src="https://skillicons.dev/icons?i=docker" height="50" alt="Docker" />
@@ -121,17 +103,11 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
   <img src="https://skillicons.dev/icons?i=kubernetes" height="50" alt="Kubernetes" />
 </a>
 
-</div>
-
 ### DevOps
-
-<div align="center">
 
 <a href="https://github.com/YOUR_USERNAME">
   <img src="https://skillicons.dev/icons?i=github" height="50" alt="GitHub" />
 </a>
-
-</div>
 
 ---
 
@@ -255,37 +231,7 @@ A containerized microservices platform with Kubernetes orchestration and automat
 
 ---
 
-<!-- ==================== GITHUB STATS ========================== -->
-
 <div align="center">
-
-## GitHub Analytics
-
-<a href="https://github.com/YOUR_USERNAME">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=c9d1d9&count_private=true" alt="GitHub Stats" />
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/YOUR_USERNAME">
-  <img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&langs_count=8" alt="Top Languages" />
-</a>
-
-<br/><br/>
-
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=58a6ff&ring=58a6ff&fire=58a6ff&currStreakLabel=58a6ff" alt="GitHub Streak" />
-
-<br/><br/>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=github-compact&hide_border=true&bg_color=0d1117&color=58a6ff&line=58a6ff&point=c9d1d9&area=true&area_color=58a6ff" alt="Activity Graph" width="95%" />
-
-</div>
-
----
-
-<div align="center">
-
-<img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&style=for-the-badge&color=58a6ff&label=PROFILE+VIEWS" alt="Profile Views" />
-
-<br/><br/>
 
 *Built with curiosity and too much coffee.*
 
