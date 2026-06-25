@@ -19,9 +19,16 @@
 </div>
 
 
-I'm a developer at the intersection of **AI/LLM engineering**, **full-stack development**, and **cloud-native deployment**. I design and ship production AI systems — from prompt architecture and agent orchestration to containerized backends and polished frontends. My toolkit spans **LangChain/LangGraph** pipelines, **.NET & React** applications, and **Azure** cloud infrastructure. I thrive on turning cutting-edge LLM research into reliable, scalable products.
+After 3 years as an IT recruiter learning how high performing teams are built and what skills drive success I'm making the move from hiring tech talent to becoming tech talent. Currently in my final year of a **Bachelor of Business Informatics** (Database Design & Systems Management), I've expanded into AI by completing several focused courses and building hands on projects.
 
-- **Learning:** <img src="https://skillicons.dev/icons?i=cs,dotnet,go" height="25" alt="C# .NET Go" style="vertical-align: middle;" />
+**Certifications:** Databricks Generative AI Fundamentals | DataCamp AI Engineer for Developers | Microsoft Azure AI Fundamentals | Azure AI Engineer Associate *(in progress)*
+
+**Methodologies:**
+
+![Agile](https://img.shields.io/badge/Agile-0A66C2?style=for-the-badge)
+![Scrum](https://img.shields.io/badge/Scrum-009688?style=for-the-badge)
+![Six Sigma](https://img.shields.io/badge/Six_Sigma-FF6F00?style=for-the-badge)
+![Kanban](https://img.shields.io/badge/Kanban-7B2D8B?style=for-the-badge)
 
 <br clear="right"/>
 
@@ -35,41 +42,26 @@ I'm a developer at the intersection of **AI/LLM engineering**, **full-stack deve
 
 </div>
 
-<img src="https://skillicons.dev/icons?i=python" height="50" alt="Python" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=cs" height="50" alt="C#" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=dotnet" height="50" alt=".NET" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=javascript" height="50" alt="JavaScript" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=react" height="50" alt="React" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=azure" height="50" alt="Azure" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=fastapi" height="50" alt="FastAPI" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=docker" height="50" alt="Docker" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=kubernetes" height="50" alt="Kubernetes" />
-&nbsp;&nbsp;
-<img src="https://skillicons.dev/icons?i=github" height="50" alt="GitHub" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/LLMOps-FF6F00?style=for-the-badge&logo=mlflow&logoColor=white" alt="LLMOps" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI API" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="REST API" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangGraph" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face" />
-&nbsp;&nbsp;
-<img src="https://img.shields.io/badge/LLMs-7B2D8B?style=for-the-badge&logo=openai&logoColor=white" alt="LLMs" />
-&nbsp;&nbsp;
+<p align="center">
+<img src="https://skillicons.dev/icons?i=python" height="50" alt="Python" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=cs" height="50" alt="C#" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=dotnet" height="50" alt=".NET" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=javascript" height="50" alt="JavaScript" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=react" height="50" alt="React" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=azure" height="50" alt="Azure" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=fastapi" height="50" alt="FastAPI" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=docker" height="50" alt="Docker" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=kubernetes" height="50" alt="Kubernetes" />&nbsp;&nbsp;
+<img src="https://skillicons.dev/icons?i=github" height="50" alt="GitHub" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/LLMOps-FF6F00?style=for-the-badge&logo=mlflow&logoColor=white" alt="LLMOps" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI API" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="REST API" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangChain" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/LangGraph-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" alt="LangGraph" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/Hugging_Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" alt="Hugging Face" />&nbsp;&nbsp;
+<img src="https://img.shields.io/badge/LLMs-7B2D8B?style=for-the-badge&logo=openai&logoColor=white" alt="LLMs" />&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Prompt_Engineering-0A66C2?style=for-the-badge&logo=bookstack&logoColor=white" alt="Prompt Engineering" />
+</p>
 
 ---
 
