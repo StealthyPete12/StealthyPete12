@@ -116,7 +116,7 @@ An ATS style app that parses CVs, normalizes skills, and ranks the top 3 matchin
 
 <div align="center">
 
-### ChatSolveAI
+### Chatbot
 
 An automated customer support chatbot that uses OpenAI embeddings for semantic search and generates responses when no predefined answer is found.
 
