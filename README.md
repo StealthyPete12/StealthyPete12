@@ -24,19 +24,17 @@
 
 </div>
 
-I'm a **backend and AI-focused software engineer** working in **Python** and **C#/.NET**. I build systems like event-driven multi-agent pipelines, hallucination-resistant RAG services, cost-aware LLM routers, and secure gateways that connect AI assistants to company systems.
+I'm a **AI focused software engineer** working in **Python** and **C#/.NET**. I build systems like event driven multi agent pipelines, hallucination resistant RAG services, cost-aware LLM routers, and secure gateways that connect AI assistants to company systems.
 
 I engineer every project the way production teams do: **automated tests, CI pipelines, Docker, distributed tracing and metrics**, with failure handling such as retries, dead-letter queues and circuit breakers designed in from the first commit.
 
-I'm most interested in **distributed systems, platform engineering, observability and cloud infrastructure** — the layers that keep software correct, resilient and debuggable once it's running for real.
-
 **Education:** Final-year **Bachelor of Business Informatics** at **UNISA**.
 
-**Background:** Before engineering, I spent almost four years in technical recruitment, working with engineering managers across **South Africa, Switzerland, the UK, the US and Europe**. That gave me a close-up view of how high-performing engineering teams are structured and make decisions. I bring that perspective and strong communication skills to every team I work in.
+**Background:** Before engineering, I spent almost four years in technical recruitment, working with engineering managers across **South Africa, Switzerland, the UK, the US and Europe**. That gave me a close up view of how high performing engineering teams are structured and make decisions. I bring that perspective and strong communication skills to every team I work in.
 
 **Seeking:** Graduate Software Engineer · Backend Engineer · AI Engineer · Platform Engineer roles.
 
-**Certifications:** Databricks Generative AI Fundamentals | DataCamp AI Engineer for Developers | Microsoft Azure AI Fundamentals | Azure AI Engineer Associate *(in progress)*
+**Certifications:** Databricks Generative AI Fundamentals | DataCamp Associate AI Engineer |
 
 **Methodologies:**
 
@@ -89,15 +87,6 @@ I'm most interested in **distributed systems, platform engineering, observabilit
 <img src="https://img.shields.io/badge/LLMs-7B2D8B?style=for-the-badge&logo=openai&logoColor=white" alt="LLMs" />&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/Prompt_Engineering-0A66C2?style=for-the-badge&logo=bookstack&logoColor=white" alt="Prompt Engineering" />
 </p>
-
-| Area | Technologies |
-|:--|:--|
-| **Languages** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![SQL](https://img.shields.io/badge/SQL-336791?style=flat-square&logo=postgresql&logoColor=white) |
-| **Frameworks** | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core_(.NET_10)-512BD4?style=flat-square&logo=dotnet&logoColor=white) ![EF Core](https://img.shields.io/badge/Entity_Framework_Core-512BD4?style=flat-square&logo=dotnet&logoColor=white) ![React Native](https://img.shields.io/badge/React_Native_(Expo)-000020?style=flat-square&logo=expo&logoColor=white) ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white) |
-| **AI & ML** | ![RAG](https://img.shields.io/badge/RAG-7B2D8B?style=flat-square) ![Embeddings](https://img.shields.io/badge/Embeddings-7B2D8B?style=flat-square) ![LLM](https://img.shields.io/badge/LLMs-7B2D8B?style=flat-square) ![Multi-Agent](https://img.shields.io/badge/Multi--Agent_Systems-7B2D8B?style=flat-square) ![MCP](https://img.shields.io/badge/MCP-000000?style=flat-square&logo=modelcontextprotocol&logoColor=white) ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=flat-square&logo=openai&logoColor=white) ![Anthropic](https://img.shields.io/badge/Anthropic_API-191919?style=flat-square&logo=anthropic&logoColor=white) |
-| **Data & Messaging** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white) |
-| **DevOps & Observability** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white) ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) |
-| **Cloud** | ![Azure App Service](https://img.shields.io/badge/Azure_App_Service-0078D4?style=flat-square&logo=microsoftazure&logoColor=white) ![Azure Blob Storage](https://img.shields.io/badge/Azure_Blob_Storage-0078D4?style=flat-square&logo=microsoftazure&logoColor=white) |
 
 ---
 
