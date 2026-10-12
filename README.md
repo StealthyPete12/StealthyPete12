@@ -10,8 +10,6 @@
 
 **Software Engineer · Backend & AI Systems · Distributed Systems · Platform & Observability**
 
-<sub>I design and build production-grade backend and AI systems — tested, containerised and observable by default.</sub>
-
 ![Backend](https://img.shields.io/badge/Backend_Engineering-1F2937?style=flat-square&logo=serverfault&logoColor=white)
 ![AI Systems](https://img.shields.io/badge/AI_Systems-7B2D8B?style=flat-square&logo=openai&logoColor=white)
 ![Distributed](https://img.shields.io/badge/Distributed_Systems-FF6600?style=flat-square&logo=rabbitmq&logoColor=white)
@@ -31,9 +29,6 @@ I'm a **backend and AI-focused software engineer** working in **Python** and **C
 I engineer every project the way production teams do: **automated tests, CI pipelines, Docker, distributed tracing and metrics**, with failure handling such as retries, dead-letter queues and circuit breakers designed in from the first commit.
 
 I'm most interested in **distributed systems, platform engineering, observability and cloud infrastructure** — the layers that keep software correct, resilient and debuggable once it's running for real.
-
-> [!NOTE]
-> **Currently building:** an **Enterprise MCP Server in C#** that lets AI assistants connect *safely* to company systems — with authentication, per-tool permissions and full audit logging.
 
 **Education:** Final-year **Bachelor of Business Informatics** at **UNISA**.
 
@@ -95,10 +90,6 @@ I'm most interested in **distributed systems, platform engineering, observabilit
 <img src="https://img.shields.io/badge/Prompt_Engineering-0A66C2?style=for-the-badge&logo=bookstack&logoColor=white" alt="Prompt Engineering" />
 </p>
 
-<details open>
-<summary><b>Full toolbox by category</b></summary>
-<br/>
-
 | Area | Technologies |
 |:--|:--|
 | **Languages** | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=dotnet&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) ![SQL](https://img.shields.io/badge/SQL-336791?style=flat-square&logo=postgresql&logoColor=white) |
@@ -107,27 +98,6 @@ I'm most interested in **distributed systems, platform engineering, observabilit
 | **Data & Messaging** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white) |
 | **DevOps & Observability** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white) ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white) ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) |
 | **Cloud** | ![Azure App Service](https://img.shields.io/badge/Azure_App_Service-0078D4?style=flat-square&logo=microsoftazure&logoColor=white) ![Azure Blob Storage](https://img.shields.io/badge/Azure_Blob_Storage-0078D4?style=flat-square&logo=microsoftazure&logoColor=white) |
-
-</details>
-
----
-
-<!-- ================= ENGINEERING PRACTICES ==================== -->
-
-<div align="center">
-
-## ![How I Build](https://readme-typing-svg.demolab.com?font=Bungee+Shade&size=24&duration=1&pause=99999999&color=000000&center=true&vCenter=true&repeat=false&width=300&height=40&lines=How+I+Build)
-
-</div>
-
-| Practice | What it looks like in my projects |
-|:--|:--|
-| 🧪 **Testing** | `pytest` suites on every Python project — **234 automated tests** incl. chaos tests in Code Review Swarm |
-| 🔁 **CI/CD** | GitHub Actions pipelines, including **automated RAG benchmark regression checks on every PR** |
-| 🐳 **Containers** | Docker & Docker Compose for reproducible, one-command local environments |
-| 📈 **Observability** | OpenTelemetry tracing, Prometheus metrics, Grafana dashboards, Arize Phoenix for LLM traces |
-| 🛡️ **Resilience** | Retries, dead-letter queues, circuit breakers, rate limiting, local-to-cloud fallback |
-| 🔐 **Security** | JWT auth, BCrypt hashing, PII guardrails, per-tool authorization and audit logging for AI actions |
 
 ---
 
@@ -313,36 +283,20 @@ Support bot using **OpenAI embeddings** for semantic search over a knowledge bas
 A Model Context Protocol server that lets AI assistants use company systems as tools — **without giving them the keys to everything**. Every call is authenticated, checked against a per-tool permission policy, and written to an audit trail.
 
 ```mermaid
-flowchart TB
-    HOST["AI Assistant<br/>MCP client · Claude, IDE agents"]
-
-    subgraph SERVER["Enterprise MCP Server · ASP.NET Core"]
-        TRANSPORT["MCP Transport<br/>JSON-RPC · MCP C# SDK"]
-        AUTHN["Authentication Layer<br/>verify caller identity"]
-        AUTHZ{"Authorization Layer<br/>per-tool read / write policy"}
-        TOOLS["Tool Registry<br/>database · ticketing · API tools"]
-        AUDIT["Audit Logger<br/>who · which tool · arguments · outcome"]
+flowchart LR
+    HOST["AI Assistant<br/>MCP client"]
+    subgraph SERVER["MCP Server · ASP.NET Core · MCP C# SDK"]
+        AUTHN["Authentication"] --> AUTHZ{"Per-tool<br/>read / write policy"}
+        AUTHZ -->|allowed| TOOLS["Tool Registry"]
+        AUTHZ -.->|denied| AUDIT["Audit Logger"]
+        TOOLS --> AUDIT
     end
+    SYS["SQL DBs · EF Core<br/>Ticketing · REST APIs"]
+    AUDITDB[("Audit Store")]
 
-    subgraph INTERNAL["Internal Company Systems"]
-        DB[("SQL Databases<br/>via EF Core")]
-        TICKETS["Ticketing Platform"]
-        APIS["Internal REST APIs"]
-    end
-
-    AUDITDB[("Audit Log Store<br/>EF Core")]
-
-    HOST -->|"tools/list · tools/call"| TRANSPORT
-    TRANSPORT --> AUTHN
-    AUTHN -->|authenticated principal| AUTHZ
-    AUTHZ -->|allowed| TOOLS
-    AUTHZ -.->|denied| AUDIT
-    TOOLS -->|read-only| DB
-    TOOLS -->|read / write| TICKETS
-    TOOLS -->|read / write| APIS
-    TOOLS -->|tool result| AUDIT
+    HOST -->|"JSON-RPC tools/call"| AUTHN
+    TOOLS <--> SYS
     AUDIT --> AUDITDB
-    TOOLS -.->|structured result| HOST
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
@@ -350,11 +304,13 @@ flowchart TB
     classDef data fill:#0A66C2,stroke:#06427F,color:#fff
     classDef ext fill:#009688,stroke:#00695C,color:#fff
     class HOST client
-    class TRANSPORT,TOOLS core
+    class TOOLS core
     class AUTHN,AUTHZ,AUDIT security
-    class DB,AUDITDB data
-    class TICKETS,APIS ext
+    class AUDITDB data
+    class SYS ext
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - Exposes SQL databases, ticketing platforms and internal REST APIs as MCP tools
@@ -362,9 +318,13 @@ flowchart TB
 - Tool-level **read-only vs write** permissions
 - Full **audit logging** of every AI-initiated action, including denied attempts
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - Built on the official **Model Context Protocol C# SDK** and ASP.NET Core
 - Security-first design: least privilege for AI agents is enforced server-side, not trusted to the model
+
+</td></tr></table>
 
 ---
 
@@ -383,40 +343,27 @@ flowchart TB
 ![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
 
-A drop-in **OpenAI-compatible** endpoint that sends simple prompts to cheap local models and only escalates to premium cloud LLMs when the prompt actually needs it — tracking every dollar saved.
+A drop-in **OpenAI-compatible** endpoint that sends simple prompts to cheap local models and only escalates to premium cloud LLMs when the prompt actually needs it — tracking every dollar saved. [**View repository →**](https://github.com/StealthyPete12/SLM-Router-API)
 
 ```mermaid
-flowchart TB
-    CLIENT["Client<br/>any OpenAI-compatible SDK"]
-
-    subgraph GATEWAY["FastAPI Gateway · /v1/chat/completions"]
-        PII["PII Guardrail<br/>screen prompts for sensitive data"]
-        CACHE{"Redis Query Cache<br/>seen before?"}
-        SCORER["Complexity Scorer<br/>prompt difficulty score"]
-        ROUTER{"Routing Engine<br/>score vs threshold"}
+flowchart LR
+    CLIENT["Client<br/>OpenAI SDK"]
+    subgraph GATEWAY["FastAPI Gateway"]
+        PII["PII Guardrail"] --> CACHE{"Redis<br/>cache"} -->|miss| ROUTER{"Complexity<br/>router"}
     end
+    LOCAL["Ollama<br/>Phi-3 · Llama 3.1"]
+    CLOUD["Premium<br/>cloud LLMs"]
+    PG[("PostgreSQL<br/>cost tracking")]
+    DASH["Streamlit<br/>savings dashboard"]
+    OBS["Prometheus<br/>Grafana"]
 
-    subgraph LOCAL["Local Inference · Ollama"]
-        PHI["Phi-3"]
-        LLAMA["Llama 3.1"]
-    end
-
-    CLOUD["Premium Cloud LLM Providers"]
-    PG[("PostgreSQL<br/>requests · tokens · cost saved")]
-    DASH["Streamlit<br/>cost-savings dashboard"]
-    PROM["Prometheus"]
-    GRAF["Grafana"]
-
-    CLIENT --> PII --> CACHE
-    CACHE -.->|"hit → cached response"| CLIENT
-    CACHE -->|miss| SCORER --> ROUTER
-    ROUTER -->|low complexity| LOCAL
-    ROUTER -->|high complexity| CLOUD
-    LOCAL -.->|"error / timeout → fallback"| CLOUD
-    LOCAL --> PG
-    CLOUD --> PG
-    PG --> DASH
-    GATEWAY -.->|/metrics| PROM --> GRAF
+    CLIENT --> PII
+    CACHE -.->|hit| CLIENT
+    ROUTER -->|simple| LOCAL
+    ROUTER -->|complex| CLOUD
+    LOCAL -.->|fallback| CLOUD
+    LOCAL & CLOUD --> PG --> DASH
+    GATEWAY -.->|metrics| OBS
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
@@ -426,13 +373,15 @@ flowchart TB
     classDef obs fill:#F46800,stroke:#A84800,color:#fff
     classDef ext fill:#009688,stroke:#00695C,color:#fff
     class CLIENT client
-    class SCORER,ROUTER core
+    class ROUTER core
     class PII security
-    class PHI,LLAMA ai
+    class LOCAL ai
     class CACHE,PG data
-    class PROM,GRAF,DASH obs
+    class OBS,DASH obs
     class CLOUD ext
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - OpenAI-compatible API — existing clients switch over by changing the base URL
@@ -441,12 +390,14 @@ flowchart TB
 - Redis **query caching** and automatic **local-to-cloud fallback**
 - Per-request **cost-savings tracking** in PostgreSQL with a Streamlit dashboard
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - Whole stack spins up with **Docker Compose**
 - **Prometheus** metrics and **Grafana** dashboards for the router
 - Tested with `pytest`
 
-[**View repository →**](https://github.com/StealthyPete12/SLM-Router-API)
+</td></tr></table>
 
 ---
 
@@ -466,53 +417,20 @@ flowchart TB
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
 
-A RAG system over the **PostgreSQL documentation** that would rather say *"I don't know"* than make something up. Answers must be backed by retrieved evidence and valid citations, and retrieval quality is guarded by a benchmark that runs on every pull request.
+A RAG system over the **PostgreSQL documentation** that would rather say *"I don't know"* than make something up. Answers must be backed by retrieved evidence and valid citations, and retrieval quality is guarded by a benchmark that runs on every pull request. [**View repository →**](https://github.com/StealthyPete12/Anti-Hallucination-System)
 
 ```mermaid
-flowchart TB
-    subgraph INGEST["Offline Ingestion"]
-        direction LR
-        DOCS["PostgreSQL Docs"] --> CHUNK["Chunker"] --> EMBI["sentence-transformers<br/>embeddings"]
-    end
-
-    QDRANT[("Qdrant<br/>dense + sparse vectors")]
-    EMBI --> QDRANT
-
-    USER["User Query"] --> API["FastAPI Service"]
-
-    subgraph PIPELINE["Query Pipeline"]
-        EMBQ["Embedding Model<br/>sentence-transformers"]
-        RET["Retriever<br/>dense · sparse · hybrid"]
-        RERANK["Reranker"]
-        EVIDENCE{"Sufficient<br/>evidence?"}
-        LLM["LLM via LiteLLM<br/>grounded generation"]
-        CITE{"Citation Validator<br/>citations match sources?"}
-    end
-
-    API --> EMBQ --> RET
+flowchart LR
+    DOCS["PostgreSQL Docs"] -->|"chunk · embed<br/>sentence-transformers"| QDRANT[("Qdrant<br/>dense + sparse")]
+    USER["User Query"] --> API["FastAPI"] --> RET["Hybrid Retriever<br/>+ Reranker"]
     RET <-->|top-k| QDRANT
-    RET --> RERANK --> EVIDENCE
-    EVIDENCE -->|yes| LLM --> CITE
-    EVIDENCE -->|no| REFUSE["Refusal<br/>insufficient evidence"]
-    CITE -->|valid| ANSWER["Answer + citations"]
-    CITE -->|invalid| REFUSE
-
-    PG[("PostgreSQL · SQLAlchemy<br/>query logs · eval results")]
-    API --> PG
-
-    subgraph CI["Evaluation Pipeline"]
-        PR["Pull Request"] --> GHA["GitHub Actions"] --> BENCH["Golden Benchmark<br/>eval pipeline"]
-        BENCH --> GATE{"Regression?"}
-        GATE -->|no| PASS["✅ PR passes"]
-        GATE -->|yes| FAIL["❌ PR blocked"]
-    end
-    BENCH -.->|benchmark queries| API
-
-    subgraph OBS["Observability"]
-        OTEL["OpenTelemetry"] --> PHOENIX["Arize Phoenix<br/>LLM traces"]
-        OTEL --> GRAF["Grafana"]
-    end
-    PIPELINE -.->|spans| OTEL
+    RET --> EVID{"Enough<br/>evidence?"}
+    EVID -->|yes| LLM["LLM<br/>LiteLLM"] --> CITE{"Citations<br/>valid?"}
+    CITE -->|yes| ANSWER["Answer +<br/>citations"]
+    EVID & CITE -->|no| REFUSE["Refuse"]
+    API --> PG[("PostgreSQL<br/>SQLAlchemy · evals")]
+    CI["PR → GitHub Actions<br/>golden benchmark gate"] -.->|eval queries| API
+    API -.->|spans| OBS["OpenTelemetry<br/>Phoenix · Grafana"]
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
@@ -522,13 +440,15 @@ flowchart TB
     classDef obs fill:#F46800,stroke:#A84800,color:#fff
     classDef ext fill:#009688,stroke:#00695C,color:#fff
     class USER,DOCS,ANSWER client
-    class API,CHUNK,RET,RERANK core
-    class EVIDENCE,CITE,REFUSE,FAIL security
-    class EMBI,EMBQ,LLM ai
+    class API,RET core
+    class EVID,CITE,REFUSE security
+    class LLM ai
     class QDRANT,PG data
-    class OTEL,PHOENIX,GRAF obs
-    class PR,GHA,BENCH,GATE,PASS ext
+    class OBS obs
+    class CI ext
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - **Source citation validation** — answers whose citations don't match retrieved chunks are rejected
@@ -537,12 +457,14 @@ flowchart TB
 - **Automated PR regression testing** in GitHub Actions
 - Retrieval experiments comparing **dense, sparse, hybrid search and reranking**
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - Provider-agnostic LLM calls through **LiteLLM**
 - End-to-end tracing with **OpenTelemetry → Arize Phoenix**, dashboards in **Grafana**
 - Treats retrieval quality like code quality: no merge if the benchmark regresses
 
-[**View repository →**](https://github.com/StealthyPete12/Anti-Hallucination-System)
+</td></tr></table>
 
 ---
 
@@ -563,51 +485,19 @@ flowchart TB
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-234_passing-2EA043?style=flat-square&logo=pytest&logoColor=white)
 
-An **event-driven, multi-agent** code review system. Three specialised agents communicate over RabbitMQ, each doing one job well, with the failure handling you'd expect in production distributed systems.
+An **event-driven, multi-agent** code review system. Three specialised agents communicate over RabbitMQ, each doing one job well, with the failure handling you'd expect in production distributed systems. [**View repository →**](https://github.com/StealthyPete12/Multi-Agent)
 
 ```mermaid
-flowchart TB
-    GH["GitHub<br/>pull request webhook"]
-
-    subgraph WATCHER["Watcher Agent · FastAPI"]
-        SIG["Webhook Signature<br/>Validation"]
-        RL["Rate Limiter"]
-    end
-    REDIS[("Redis<br/>rate-limit counters")]
-
-    subgraph MQ["RabbitMQ"]
-        Q1[["research queue"]]
-        Q2[["review queue"]]
-        DLQ[["dead-letter queue"]]
-    end
-
-    RES["Researcher Agent<br/>dependency graph · blast radius"]
-    REV["Reviewer Agent<br/>risk analysis"]
-
-    subgraph LLMS["LLM Providers · behind circuit breaker"]
-        CLAUDE["Claude"]
-        OPENAI["OpenAI"]
-        OLLAMA["Ollama"]
-    end
-
-    PG[("PostgreSQL<br/>review state · findings")]
-    SLACK["Slack<br/>risk report"]
-
-    subgraph MON["Monitoring Stack"]
-        OTEL["OpenTelemetry"] --> PROM["Prometheus"] --> GRAF["Grafana"]
-    end
-
-    GH -->|webhook| SIG --> RL
-    RL <--> REDIS
-    RL -->|publish| Q1 --> RES
-    RES -->|publish| Q2 --> REV
-    REV -->|"retries · circuit breaker"| LLMS
-    RES --> PG
-    REV --> PG
-    REV --> SLACK
-    Q1 -.->|retries exhausted| DLQ
-    Q2 -.->|retries exhausted| DLQ
-    SIG & RES & REV -.->|traces · metrics| OTEL
+flowchart LR
+    GH["GitHub PR<br/>webhook"] --> WATCH["Watcher Agent<br/>signature · rate limit"]
+    WATCH <--> REDIS[("Redis")]
+    WATCH -->|research queue| RES["Researcher Agent<br/>blast radius"]
+    RES -->|review queue| REV["Reviewer Agent<br/>risk analysis"]
+    REV -->|circuit breaker| LLMS["Claude · OpenAI<br/>Ollama"]
+    REV --> SLACK["Slack<br/>risk report"]
+    RES & REV --> PG[("PostgreSQL")]
+    RES & REV -.->|retries exhausted| DLQ[["RabbitMQ DLQ"]]
+    WATCH & RES & REV -.->|traces · metrics| OBS["OpenTelemetry<br/>Prometheus · Grafana"]
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
@@ -617,13 +507,15 @@ flowchart TB
     classDef obs fill:#F46800,stroke:#A84800,color:#fff
     classDef ext fill:#009688,stroke:#00695C,color:#fff
     class GH client
-    class RES,REV,Q1,Q2 core
-    class SIG,RL,DLQ security
-    class CLAUDE,OPENAI,OLLAMA ai
+    class RES,REV core
+    class WATCH,DLQ security
+    class LLMS ai
     class REDIS,PG data
-    class OTEL,PROM,GRAF obs
+    class OBS obs
     class SLACK ext
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - **Watcher Agent** validates GitHub webhooks and enforces Redis-backed rate limits
@@ -631,13 +523,15 @@ flowchart TB
 - **Reviewer Agent** performs LLM-powered risk analysis and posts reports to **Slack**
 - Multi-provider LLM support: **Claude, OpenAI and local Ollama models**
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - **Dead-letter queues, retries and circuit breakers** for graceful failure handling
 - **234 automated tests**, including **chaos testing** of failure scenarios
 - Distributed tracing and metrics across all agents with **OpenTelemetry, Prometheus and Grafana**
 - Containerised with Docker and tested in **GitHub Actions** CI
 
-[**View repository →**](https://github.com/StealthyPete12/Multi-Agent)
+</td></tr></table>
 
 ---
 
@@ -651,37 +545,28 @@ flowchart TB
 ![pandas](https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
 
-An **ATS-style** CV matching engine that applies real hiring domain knowledge to a hybrid ML system. It reads PDF and DOCX CVs, normalises skills, and combines a machine-learning classifier with rule-based logic to rank the best-fit technical roles — and explains *why*.
+An **ATS-style** CV matching engine that applies real hiring domain knowledge to a hybrid ML system. It reads PDF and DOCX CVs, normalises skills, and combines a machine-learning classifier with rule-based logic to rank the best-fit technical roles — and explains *why*. [**View repository →**](https://github.com/StealthyPete12/AICandidate-System)
 
 ```mermaid
-flowchart TB
-    UPLOAD["CV Upload<br/>Streamlit · PDF / DOCX"]
-    PARSE["Document Parser<br/>pdfplumber · python-docx"]
-    SKILLS["Skill Normalisation<br/>aliases → canonical skills"]
-    FEAT["Feature Extraction<br/>pandas · NumPy"]
-
-    subgraph SCORING["Hybrid Scoring"]
-        ML["ML Classifier<br/>scikit-learn"]
-        RULES["Rule Engine<br/>required skills · seniority signals"]
-    end
-
-    RANK["Ranking Engine<br/>blended ML + rule score"]
-    DASH["Results Dashboard<br/>top roles · scores · explanations · seniority"]
-
-    UPLOAD --> PARSE --> SKILLS --> FEAT
-    FEAT --> ML --> RANK
-    FEAT --> RULES --> RANK
-    RANK --> DASH
+flowchart LR
+    UPLOAD["CV Upload<br/>PDF / DOCX"] --> PARSE["Parser<br/>pdfplumber · python-docx"]
+    PARSE --> FEAT["Skill normalisation<br/>+ features · pandas"]
+    FEAT --> ML["ML Classifier<br/>scikit-learn"]
+    FEAT --> RULES["Rule Engine<br/>skills · seniority"]
+    ML & RULES --> RANK["Ranking<br/>blended score"]
+    RANK --> DASH["Streamlit Dashboard<br/>roles · explanations"]
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
     classDef ai fill:#7B2D8B,stroke:#4A1A55,color:#fff
     classDef obs fill:#F46800,stroke:#A84800,color:#fff
     class UPLOAD client
-    class PARSE,SKILLS,FEAT,RULES,RANK core
+    class PARSE,FEAT,RULES,RANK core
     class ML ai
     class DASH obs
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - Reads **PDF and DOCX** CVs
@@ -689,11 +574,13 @@ flowchart TB
 - Generates human-readable **explanations** for each match
 - Estimates candidate **seniority**
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - **Hybrid decision system**: ML predictions combined with explicit, auditable business rules
 - Skill normalisation and rules encode domain knowledge from almost four years of technical hiring
 
-[**View repository →**](https://github.com/StealthyPete12/AICandidate-System)
+</td></tr></table>
 
 ---
 
@@ -708,51 +595,38 @@ flowchart TB
 ![React Native](https://img.shields.io/badge/React_Native-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![Expo](https://img.shields.io/badge/Expo-000020?style=flat-square&logo=expo&logoColor=white)
 
-A mobile wallet for loyalty and shopping cards — scan a barcode or add a card manually, then swipe to it at checkout. Backed by a secure **ASP.NET Core REST API**.
+A mobile wallet for loyalty and shopping cards — scan a barcode or add a card manually, then swipe to it at checkout. Backed by a secure **ASP.NET Core REST API**. [**View repository →**](https://github.com/StealthyPete12/Cardy)
 
 ```mermaid
-flowchart TB
-    subgraph APP["React Native App · Expo"]
-        AUTHUI["Login / Register"]
-        WALLET["Swipeable Card Wallet"]
-        SCAN["Barcode Scanner"]
-        STORE["Secure Token Storage"]
-        CLIENTAPI["API Client<br/>Bearer JWT"]
+flowchart LR
+    subgraph APP["React Native · Expo"]
+        UI["Wallet · Scanner<br/>Login"]
+        STORE["Secure token<br/>storage"]
     end
-
-    subgraph API["ASP.NET Core REST API · .NET 10"]
-        AUTHC["Auth Endpoints<br/>register · login"]
-        BCRYPT["BCrypt<br/>password hashing"]
-        JWTISSUE["JWT Issuer"]
-        JWTMW{"JWT Bearer Middleware<br/>validate token"}
-        CARDS["Card Endpoints<br/>CRUD"]
-        EF["Entity Framework Core<br/>DbContext"]
+    subgraph API["ASP.NET Core · .NET 10"]
+        AUTHC["Auth endpoints<br/>BCrypt · JWT issuer"]
+        JWTMW{"JWT bearer<br/>middleware"}
+        CARDS["Card CRUD"]
+        EF["EF Core"]
     end
-
     DB[("SQLite")]
 
-    AUTHUI -->|credentials| AUTHC
-    AUTHC --> BCRYPT
-    AUTHC --> JWTISSUE
-    JWTISSUE -.->|token| STORE
-    STORE --> CLIENTAPI
-    WALLET --> CLIENTAPI
-    SCAN --> CLIENTAPI
-    CLIENTAPI -->|card requests + JWT| JWTMW
-    JWTMW -->|valid| CARDS
-    AUTHC --> EF
-    CARDS --> EF
-    EF --> DB
+    UI -->|credentials| AUTHC
+    AUTHC -.->|token| STORE
+    STORE -->|Bearer JWT| JWTMW -->|valid| CARDS
+    AUTHC & CARDS --> EF --> DB
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
     classDef security fill:#B91C1C,stroke:#7F1D1D,color:#fff
     classDef data fill:#0A66C2,stroke:#06427F,color:#fff
-    class AUTHUI,WALLET,SCAN,CLIENTAPI client
-    class AUTHC,CARDS,EF core
-    class STORE,BCRYPT,JWTISSUE,JWTMW security
+    class UI client
+    class CARDS,EF core
+    class STORE,AUTHC,JWTMW security
     class DB data
 ```
+
+<table><tr><td width="50%" valign="top">
 
 **Key features**
 - **JWT authentication** with **BCrypt** password hashing
@@ -760,11 +634,13 @@ flowchart TB
 - **Barcode scanning** and manual card entry
 - **Secure on-device token storage** and a swipeable card experience
 
+</td><td width="50%" valign="top">
+
 **Technical highlights**
 - Clean separation between mobile client, REST API and persistence layer
 - Protected endpoints enforced by JWT bearer middleware on the server
 
-[**View repository →**](https://github.com/StealthyPete12/Cardy)
+</td></tr></table>
 
 ---
 
@@ -776,40 +652,27 @@ flowchart TB
 ![GPT-3.5](https://img.shields.io/badge/GPT--3.5--turbo-412991?style=flat-square&logo=openai&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
 
-A customer support chatbot that answers from a curated knowledge base using **semantic similarity search**, and falls back to GPT generation only when no confident match exists.
+A customer support chatbot that answers from a curated knowledge base using **semantic similarity search**, and falls back to GPT generation only when no confident match exists. [**View repository →**](https://github.com/StealthyPete12/DataCamp-Chatbot)
 
 ```mermaid
-flowchart TB
-    subgraph PREP["Knowledge Base Preparation"]
-        direction LR
-        KB["Support Knowledge Base"] --> EMBKB["text-embedding-3-small"] --> VEC[("KB Embeddings")]
-    end
-
-    USER["User Question"] --> EMBQ["text-embedding-3-small"]
-    EMBQ --> SIM["Similarity Search<br/>cosine similarity"]
-    VEC --> SIM
-    SIM --> CONF{"Confident<br/>match?"}
-    CONF -->|yes| KBANS["Knowledge Base Answer"]
-    CONF -->|no| GPT["GPT-3.5-turbo<br/>response generation"]
-    KBANS --> RESP["Response to User"]
-    GPT --> RESP
+flowchart LR
+    KB["Knowledge Base"] -->|embed| VEC[("KB Embeddings")]
+    USER["User Question"] -->|text-embedding-3-small| SIM["Cosine<br/>similarity search"]
+    VEC --> SIM --> CONF{"Confident<br/>match?"}
+    CONF -->|yes| KBANS["Knowledge Base<br/>answer"]
+    CONF -->|no| GPT["GPT-3.5-turbo<br/>generation"]
 
     classDef client fill:#E8E4DE,stroke:#000,color:#000
     classDef core fill:#1F2937,stroke:#000,color:#fff
     classDef ai fill:#7B2D8B,stroke:#4A1A55,color:#fff
     classDef data fill:#0A66C2,stroke:#06427F,color:#fff
-    class USER,RESP client
+    class USER client
     class SIM,CONF,KBANS core
-    class EMBKB,EMBQ,GPT ai
+    class GPT ai
     class KB,VEC data
 ```
 
-**Key features**
-- Semantic search with OpenAI **text-embedding-3-small**
-- Retrieves the most relevant knowledge-base content for each question
-- **Confidence-based fallback** to GPT-3.5-turbo when no strong match exists
-
-[**View repository →**](https://github.com/StealthyPete12/DataCamp-Chatbot)
+**Key features** — semantic search with OpenAI **text-embedding-3-small** · retrieves the most relevant knowledge-base content for each question · **confidence-based fallback** to GPT-3.5-turbo when no strong match exists
 
 ---
 
