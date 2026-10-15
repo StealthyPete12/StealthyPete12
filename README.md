@@ -24,15 +24,13 @@
 
 </div>
 
-I'm a **AI focused software engineer** working in **Python** and **C#/.NET**. I build systems like event driven multi agent pipelines, hallucination resistant RAG services, cost-aware LLM routers, and secure gateways that connect AI assistants to company systems.
+I'm a **AI focused engineer** working in **Python** and **C#/.NET**. I build systems like event driven multi agent pipelines, hallucination resistant RAG services, cost-aware LLM routers, and secure gateways that connect AI assistants to company systems.
 
 I engineer every project the way production teams do: **automated tests, CI pipelines, Docker, distributed tracing and metrics**, with failure handling such as retries, dead-letter queues and circuit breakers designed in from the first commit.
 
 **Education:** Final-year **Bachelor of Business Informatics** at **UNISA**.
 
 **Background:** Before engineering, I spent almost four years in technical recruitment, working with engineering managers across **South Africa, Switzerland, the UK, the US and Europe**. That gave me a close up view of how high performing engineering teams are structured and make decisions. I bring that perspective and strong communication skills to every team I work in.
-
-**Seeking:** Graduate Software Engineer · Backend Engineer · AI Engineer · Platform Engineer roles.
 
 **Certifications:** Databricks Generative AI Fundamentals | DataCamp Associate AI Engineer |
 
